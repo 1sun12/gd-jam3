@@ -10,6 +10,5 @@
 # and the contents inside code
 !/scenes/*
 
-# Godot 4+ specific ignores
-.godot/
-/android/
+# and the .godot configuration 
+!.godot
