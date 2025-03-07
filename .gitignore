@@ -1,0 +1,15 @@
+# ignore everything
+/*
+
+# except .gitignore
+!.gitignore
+
+# except code
+!/code
+
+# and the contents inside code
+!/code/*
+
+# Godot 4+ specific ignores
+.godot/
+/android/
