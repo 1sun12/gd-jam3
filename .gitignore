@@ -5,10 +5,10 @@
 !.gitignore
 
 # except code
-!/code
+!/scenes
 
 # and the contents inside code
-!/code/*
+!/scenes/*
 
 # Godot 4+ specific ignores
 .godot/
