@@ -1,3 +1,14 @@
-[gd_scene format=3 uid="uid://ch2yixalxoc3d"]
+[gd_scene load_steps=3 format=3 uid="uid://ch2yixalxoc3d"]
+
+[ext_resource type="PackedScene" uid="uid://byf88w1iqmpx" path="res://scenes/player_knight.tscn" id="1_uwrxv"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_uwrxv"]
 
 [node name="Game" type="Node2D"]
+
+[node name="PlayerKnight" parent="." instance=ExtResource("1_uwrxv")]
+position = Vector2(448, 246)
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+position = Vector2(418, 261)
+mesh = SubResource("CapsuleMesh_uwrxv")

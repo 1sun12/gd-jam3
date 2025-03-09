@@ -1,2 +1,3 @@
-res://scenes/game.tscn
 res://scenes/player_knight.tscn
+res://scenes/player_knight.gd
+res://scenes/game.tscn

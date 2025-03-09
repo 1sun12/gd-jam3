@@ -1,5 +1,6 @@
-[gd_scene load_steps=90 format=3 uid="uid://byf88w1iqmpx"]
+[gd_scene load_steps=91 format=3 uid="uid://byf88w1iqmpx"]
 
+[ext_resource type="Script" uid="uid://dxb6bh4wk381l" path="res://scenes/player_knight.gd" id="1_032mb"]
 [ext_resource type="Texture2D" uid="uid://cln1d37irjqva" path="res://assets/craftpix-free-top-down-roguelike-game-kit-pixel-art/1 Characters/2/D_Idle.png" id="1_k5a2y"]
 [ext_resource type="Texture2D" uid="uid://bb0h20ft4cqkv" path="res://assets/craftpix-free-top-down-roguelike-game-kit-pixel-art/1 Characters/2/D_Attack.png" id="1_xoomq"]
 [ext_resource type="Texture2D" uid="uid://bvwmkv3gambw3" path="res://assets/craftpix-free-top-down-roguelike-game-kit-pixel-art/1 Characters/2/U_Idle.png" id="2_n5tgh"]
@@ -16,7 +17,8 @@
 [ext_resource type="Texture2D" uid="uid://by32bsi44tipo" path="res://assets/craftpix-free-top-down-roguelike-game-kit-pixel-art/1 Characters/2/U_Death.png" id="12_6y2fi"]
 [ext_resource type="Texture2D" uid="uid://dmq6xv8j5jq7k" path="res://assets/craftpix-free-top-down-roguelike-game-kit-pixel-art/1 Characters/2/U_Hurt.png" id="13_iq8oj"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_11bhx"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i2310"]
+size = Vector2(14, 17)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_b38bo"]
 atlas = ExtResource("1_xoomq")
@@ -601,13 +603,21 @@ animations = [{
 }]
 
 [node name="PlayerKnight" type="CharacterBody2D"]
+script = ExtResource("1_032mb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_11bhx")
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_i2310")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
 texture_filter = 1
+position = Vector2(0, 4)
 sprite_frames = SubResource("SpriteFrames_48q1q")
 animation = &"d_attack"
-frame_progress = 0.585793
+frame = 3
+frame_progress = 0.383797
 speed_scale = 1.5
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(5, 5)
