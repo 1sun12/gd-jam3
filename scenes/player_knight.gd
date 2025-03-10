@@ -88,7 +88,4 @@ func _physics_process(delta):
 	# collect data from keyboard inputs to associate which dir. the...
 	# ...the player is moving in
 	direction = Input.get_vector("m_left", "m_right", "m_up", "m_down")
-	print(direction)
 	_char_controls(delta)
-	
-	

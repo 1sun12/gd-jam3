@@ -1,4 +1,4 @@
-[gd_scene load_steps=91 format=3 uid="uid://byf88w1iqmpx"]
+[gd_scene load_steps=92 format=3 uid="uid://byf88w1iqmpx"]
 
 [ext_resource type="Script" uid="uid://dxb6bh4wk381l" path="res://scenes/player_knight.gd" id="1_032mb"]
 [ext_resource type="Texture2D" uid="uid://cln1d37irjqva" path="res://assets/craftpix-free-top-down-roguelike-game-kit-pixel-art/1 Characters/2/D_Idle.png" id="1_k5a2y"]
@@ -602,7 +602,14 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_032mb"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+
 [node name="PlayerKnight" type="CharacterBody2D"]
+z_index = 30
+collision_mask = 3
 script = ExtResource("1_032mb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -619,5 +626,5 @@ frame = 3
 frame_progress = 0.383797
 speed_scale = 1.5
 
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(5, 5)
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_032mb")
