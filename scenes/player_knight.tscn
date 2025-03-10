@@ -627,4 +627,5 @@ frame_progress = 0.383797
 speed_scale = 1.5
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+unique_name_in_owner = true
 replication_config = SubResource("SceneReplicationConfig_032mb")

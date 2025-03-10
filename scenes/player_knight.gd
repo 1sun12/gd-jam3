@@ -84,8 +84,14 @@ func _char_controls_anims():
 	
 # READY & PROCESS
 # =======================================================================
+func _ready():
+	# setting up authority for each peer
+	%MultiplayerSynchronizer.set_multiplayer_authority(str(name).to_int())
+
 func _physics_process(delta):
-	# collect data from keyboard inputs to associate which dir. the...
-	# ...the player is moving in
-	direction = Input.get_vector("m_left", "m_right", "m_up", "m_down")
-	_char_controls(delta)
+	# if you have the authority to control everything below (because your ID matches)...
+	if %MultiplayerSynchronizer.get_multiplayer_authority() == multiplayer.get_unique_id():
+		# collect data from keyboard inputs to associate which dir. the...
+		# ...the player is moving in
+		direction = Input.get_vector("m_left", "m_right", "m_up", "m_down")
+		_char_controls(delta)

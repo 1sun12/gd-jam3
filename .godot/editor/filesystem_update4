@@ -2,3 +2,7 @@ res://scenes/game.tscn
 res://scenes/player_knight.tscn
 res://scenes/tile_map.tscn
 res://scenes/ui_multiplayer.tscn
+res://scenes/ui_multiplayer.gd
+res://scenes/global.gd
+res://scenes/game.gd
+res://scenes/player_knight.gd

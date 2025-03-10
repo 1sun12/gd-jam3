@@ -1,6 +1,8 @@
-Button
 MultiplayerSynchronizer
 Node2D
+Label
+LineEdit
+Button
 Node
 MultiplayerSpawner
 CanvasLayer
@@ -10,5 +12,3 @@ TileMap
 MeshInstance2D
 AnimatedSprite2D
 AnimationPlayer
-AnimationTree
-Sprite2D

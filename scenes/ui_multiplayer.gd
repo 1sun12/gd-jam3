@@ -22,10 +22,40 @@ func player_disconnected(id):
 # called only from clients
 func connected_to_server():
 	print("Connected to server!")
+	send_player_info.rpc_id(1, %LineEdit.text, multiplayer.get_unique_id())
 
 # called only from clients
 func connection_failed():
 	print("Connection failed!")
+	
+# keep a synchronized list of all connected players and their ids across all peers
+@rpc("any_peer")
+func send_player_info(name, id):
+	# if the global var. players does not have this player id...
+	if !Global.players.has(id):
+		# add that player name and id to their local list on that peer
+		# storing information as an object
+		Global.players[id] = {
+			"name" : name,
+			"id" : id,
+			"score" : 0			
+		}
+	
+	# if this peer is the server, go ahead and update this information for all connected clients
+	if multiplayer.is_server():
+		# loop through all players in the global array
+		for i in Global.players:
+			send_player_info.rpc(Global.players[i].name, i)
+	
+# load the game scene for all connected clients
+@rpc("any_peer", "call_local")
+func start_game():
+	# load the game scene
+	var game_scene = load("res://scenes/game.tscn").instantiate()
+	# add it as a child to the root tree
+	get_tree().root.add_child(game_scene)
+	# hide this UI menu overlay
+	self.hide()
 
 # creates a host peer to connect to
 func _on_host_button_down():
@@ -42,6 +72,7 @@ func _on_host_button_down():
 	# now that the computer is ready to host, pass the peer as the host object
 	multiplayer.set_multiplayer_peer(peer)
 	print("Waiting for players...")
+	send_player_info(%LineEdit.text, multiplayer.get_unique_id())
 
 func _on_join_button_down():
 	# create a new peer; the client
@@ -54,4 +85,5 @@ func _on_join_button_down():
 	multiplayer.set_multiplayer_peer(peer)
 
 func _on_start_game_button_down():
-	pass # Replace with function body.
+	# call start game, for all clients (rpc)
+	start_game.rpc()

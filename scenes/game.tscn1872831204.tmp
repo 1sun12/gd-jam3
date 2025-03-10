@@ -8,10 +8,13 @@
 script = ExtResource("1_yqjtg")
 player_knight = ExtResource("1_uwrxv")
 
-[node name="0" type="Node2D" parent="." groups=["PlayerSpawnPoints"]]
-position = Vector2(38, 87)
-
-[node name="1" type="Node2D" parent="." groups=["PlayerSpawnPoints"]]
-position = Vector2(232, 90)
+[node name="SpawnPoint" type="Node2D" parent="."]
+position = Vector2(135, 81)
 
 [node name="TileMap" parent="." instance=ExtResource("2_yqjtg")]
+
+[node name="Spawn1" type="Node2D" parent="." groups=["PlayerSpawnPoints"]]
+position = Vector2(38, 87)
+
+[node name="Spawn2" type="Node2D" parent="." groups=["PlayerSpawnPoints"]]
+position = Vector2(232, 90)
